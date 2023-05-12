@@ -4,6 +4,7 @@ import "./SquareGame.css";
 function SquareGame() {
   const [position, setPosition] = useState({ x: 50, y: 50 });
 
+  //Below functions changes the position of small-sqaure by changing position.x and postion.y
   const handleClick = (dx, dy) => {
     const newPos = { x: position.x + dx, y: position.y + dy };
 
@@ -13,8 +14,11 @@ function SquareGame() {
   };
 
   const isInside = ({ x, y }) => {
+    // movement of small-square can be adjusted by changing these values
     const size = 500;
     const margin = 0;
+
+    //"isInside" works by checking position (x,y) with respect to left and top margin.
     return (
       x >= margin &&
       x <= size - (50 + margin) &&
@@ -28,6 +32,7 @@ function SquareGame() {
       <div className="main-container">
         <div>
           <button
+            // If small square reaches the boundary, then nearest button is disabled
             disabled={position.y === 0 ? true : false}
             className="vertical"
             onClick={() => handleClick(0, -50)}
